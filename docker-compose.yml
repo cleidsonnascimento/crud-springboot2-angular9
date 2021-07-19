@@ -1,0 +1,20 @@
+version: '3.7'
+
+services:
+
+  app-server-veiculos:
+    build:
+      context: cadastro-veiculo-api
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+        
+  app-client-veiculos:
+    build:
+      context: cadastro-veiculo-app
+      dockerfile: Dockerfile
+    ports:
+      - '4200:80'
+    restart: always
+    depends_on:
+      - app-server-veiculos
